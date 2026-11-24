@@ -1,0 +1,20 @@
+.diagram-wire { pointer-events:none; }
+.diagram-wire-hit { fill:none; stroke:transparent; stroke-width:10; pointer-events:stroke; cursor:pointer; outline:none!important; }
+.diagram-wire-hit:focus { outline:none!important; }
+.diagram-wire-hit:focus-visible { stroke:#3798bb40; }
+.diagram-connection .diagram-wire.is-selected { stroke:#d97706!important; stroke-width:var(--diagram-selected-width,2.5px)!important; stroke-dasharray:none!important; opacity:1!important; marker-end:var(--diagram-selected-end)!important; marker-start:var(--diagram-selected-start)!important; }
+.diagram-port { pointer-events:none; }
+.diagram-port.is-selected { fill:#fff1d6!important; stroke:#d97706!important; stroke-width:1.6!important; }
+.diagram-unit-link { color:inherit; cursor:pointer; text-decoration:underline dotted; text-underline-offset:3px; }
+.diagram-unit-link:hover { color:#007d86; text-decoration-style:solid; }
+.diagram-unit-link:focus-visible { outline:1px solid #008c90; outline-offset:3px; }
+svg .diagram-unit-link text { cursor:pointer; }
+
+.diagram-wire { stroke-dasharray:none!important; }
+.diagram-signal-symbol.is-selected { color:#d97706!important; }
+polygon.diagram-signal-symbol.is-selected,.diagram-signal-symbol.is-selected > rect { stroke:#d97706!important; stroke-width:1.4!important; }
+
+.diagram-unit-movable { cursor:move; user-select:none; touch-action:none; }
+.diagram-unit-movable.is-moving { cursor:move; }
+.diagram-unit-movable text:not(.functional-name) { pointer-events:none; }
+.diagram-unit-movable .diagram-unit-link,.diagram-unit-movable .diagram-unit-link text { cursor:pointer; }

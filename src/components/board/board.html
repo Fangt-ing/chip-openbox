@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chip Openbox · board</title><link rel="stylesheet" href="./board.css"><link rel="stylesheet" href="../../common/visualization/canvas-navigation.css"><script defer src="../../common/component-channel.js"></script><script defer src="../../common/visualization/connection-ports.js"></script><script defer src="../../common/visualization/canvas-zoom.js"></script><link rel="stylesheet" href="../../common/visualization/pane-heading.css"><script defer src="../../common/visualization/pane-heading.js"></script><script defer src="./board.js"></script></head>
+<body>
+  <header><h1>Chip Openbox</h1><nav aria-label="Workspace"><a href="../scripts/scripts.html" target="_top">scripts</a><a href="../chip/chip.html" target="_top">chip</a><a href="../board/board.html" aria-current="page">board</a><a href="../../openbox.html" target="_top">openbox</a></nav><div class="board-toolbar pane-heading" aria-label="Board controls">    <div class="workflow-actions" aria-label="Board workflow controls">
+      <button id="flash" class="workflow-button primary" data-workflow="flash" type="button">Flash<small>placeholder</small></button>
+      <button id="standalone" class="workflow-button" data-workflow="standalone" type="button">Standalone<small>placeholder</small></button>
+      <button id="debug" class="workflow-button" data-workflow="debug" type="button">Debug<small>placeholder</small></button>
+    </div>
+<div class="zoom-controls" role="group" aria-label="Canvas zoom"><button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out">−</button><button id="zoom-reset" type="button" aria-label="Zoom 100 percent. Reset view to 100 percent" title="Reset view to 100%">100%</button><button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in">+</button></div></div></header>
+  <main><div class="board-canvas" aria-label="Board canvas"><div id="board-zoom-surface"><section class="board-placeholder">
+    <span class="workspace-name">PCB / board</span><h2>Board workflows</h2>
+    <p id="workflow-status" class="workflow-status" role="status">No programming or execution has occurred.</p>
+    <p id="board-connection">Open openbox to connect scripts, board and MCU views.</p>
+    <div id="selected-image" hidden>
+      <h3>Current scripts image</h3>
+      <dl><dt>Build target</dt><dd id="image-target"></dd><dt>Compiler</dt><dd id="image-compiler"></dd><dt>Image size</dt><dd id="image-size"></dd></dl>
+      <pre id="image-bytes" aria-label="Image preview bytes"></pre>
+    </div>
+    <p class="scope-note">No board circuit or programmer pins are modeled yet. Image handoff is a preview; Flash, standalone and debug operations remain placeholders.</p>
+  </section></div></div></main>
+</body></html>

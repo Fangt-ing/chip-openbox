@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Chip Openbox · scripts</title>
+  <link rel="stylesheet" href="./scripts.css"><link rel="stylesheet" href="../../common/visualization/canvas-navigation.css">
+  <link rel="stylesheet" href="../../common/visualization/diagram-objects.css">
+  <script defer src="../../common/visualization/diagram-objects.js"></script>
+  <script defer src="../../common/correspondence/intel-hex.js"></script>
+  <script defer src="../../common/component-channel.js"></script><script defer src="../../common/visualization/connection-ports.js"></script><script defer src="../../common/visualization/canvas-zoom.js"></script>
+  <script defer src="./visualization/connections.js"></script>
+  <script defer src="./default-content/profiles.js"></script>
+  <script defer src="../../workflows/scripting/integrations/compiler-explorer.js"></script>
+  <script defer src="../../workflows/scripting/scripting.js"></script>
+  <link rel="stylesheet" href="../../common/visualization/pane-heading.css"><script defer src="../../common/visualization/pane-heading.js"></script><script defer src="./scripts.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <header class="app-header">
+    <h1>Chip Openbox</h1>
+    <nav class="workspace-tabs" aria-label="Workspace">
+      <a class="workspace-tab selected" aria-current="page" href="./scripts.html">scripts</a>
+      <a class="workspace-tab" href="../chip/chip.html" target="_top">chip</a>
+      <a class="workspace-tab" href="../board/board.html" target="_top">board</a>
+      <a class="workspace-tab" href="../../openbox.html" target="_top">openbox</a>
+    </nav>
+    <span hidden class="target-label" id="target-label">Generic Cortex-M85 · example map</span>
+  <section class="toolbar pane-heading" aria-label="Compiler settings">
+    <label>Build target: <select id="target" aria-label="Build target"><option value="cortex-m85" selected>Generic Cortex-M85 · example map</option><option value="desktop">Desktop teaching · x86-64</option><option value="stm32f103c8">STM32F103C8 · Cortex-M3</option></select></label>
+    <label>Compiler: <select id="compiler" aria-label="Compiler"><option value="carmug1320">Arm GCC 13.2.0 (unknown-eabi)</option></select></label>
+    <label>Optimization: <select id="optimization" aria-label="Optimization"><option value="0">-O0 (none)</option><option value="1">-O1</option><option value="2">-O2</option><option value="s">-Os (size)</option></select></label>
+    <div class="zoom-controls" role="group" aria-label="Canvas zoom"><button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out">−</button><button id="zoom-reset" type="button" aria-label="Zoom 100 percent. Reset view to 100 percent" title="Reset view to 100%">100%</button><button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in">+</button></div>
+    <span class="build-status" id="build-status" role="status">Choose a process to see its results.</span>
+  </section>
+  <p class="provider-note" hidden><span id="profile-note">Results are built on click and cached.</span> <a href="https://godbolt.org" target="_blank" rel="noopener">Compiler Explorer</a> requires internet for new builds.</p>
+  </header>
+  <noscript>Enable JavaScript to use the live compiler.</noscript>
+  <div class="canvas-viewport" aria-label="Scripts workflow canvas">
+  <div id="scripts-zoom-surface">
+  <main class="workspace" id="workspace" aria-busy="false">
+    <svg id="connections" aria-label="Source and scripting workflow connections"><defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7" fill="#728596"/></marker><marker id="arrow-active" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7" fill="#008c90"/></marker></defs><g id="wire-paths"></g></svg>
+    <section class="editor-grid" id="editors" aria-label="Editable project inputs"></section>
+    <section class="process-list" aria-label="Build processes">
+      <details class="process-card" data-stage="preprocess" id="stage-preprocess">
+        <summary><span class="process-number">1</span><strong>Preprocess</strong><span class="process-status">Not built</span><span class="fold-icon" aria-hidden="true"></span></summary>
+        <div class="process-content">
+          <p class="process-description">Header inclusion, macro expansion and conditional source.</p>
+          <div class="process-tools"><button class="button refresh-stage" type="button">Refresh</button><span class="result-state" role="status"></span></div>
+          <pre class="process-output" id="output-preprocess" tabindex="0" aria-label="Preprocess result">Open this process to request its results.</pre>
+        </div>
+      </details>
+      <details class="process-card" data-stage="compile" id="stage-compile">
+        <summary><span class="process-number">2</span><strong>Compile</strong><span class="process-status">Not built</span><span class="fold-icon" aria-hidden="true"></span></summary>
+        <div class="process-content">
+          <p class="process-description">Generated assembly for each C source, including startup and vectors.</p>
+          <div class="process-tools"><button class="button refresh-stage" type="button">Refresh</button><span class="result-state" role="status"></span></div>
+          <pre class="process-output" id="output-compile" tabindex="0" aria-label="Compile result">Open this process to request its results.</pre>
+        </div>
+      </details>
+      <details class="process-card" data-stage="assemble" id="stage-assemble">
+        <summary><span class="process-number">3</span><strong>Assemble</strong><span class="process-status">Not built</span><span class="fold-icon" aria-hidden="true"></span></summary>
+        <div class="process-content">
+          <p class="process-description">Object code, symbols and unresolved references.</p>
+          <div class="process-tools"><button class="button refresh-stage" type="button">Refresh</button><span class="result-state" role="status"></span></div>
+          <pre class="process-output" id="output-assemble" tabindex="0" aria-label="Assemble result">Open this process to request its results.</pre>
+        </div>
+      </details>
+      <details class="process-card" data-stage="link" id="stage-link">
+        <summary><span class="process-number">4</span><strong>Link</strong><span class="process-status">Not built</span><span class="fold-icon" aria-hidden="true"></span></summary>
+        <div class="process-content">
+          <p class="process-description">Resolved program, memory placement and vector entries.</p>
+          <div class="process-tools"><div class="process-views" aria-label="Link result view"><button data-view="disassembly" class="selected">Disassembly</button><button data-view="map">Map</button><button data-view="vectors">Vectors</button></div><button class="button refresh-stage" type="button">Refresh</button><span class="result-state" role="status"></span></div>
+          <pre class="process-output" id="output-link" tabindex="0" aria-label="Link result">Open this process to request its results.</pre>
+        </div>
+      </details>
+      <details class="process-card" data-stage="export" id="stage-export">
+        <summary><span class="process-number">5</span><strong>Export</strong><span class="process-status">Not built</span><span class="fold-icon" aria-hidden="true"></span></summary>
+        <div class="process-content">
+          <p class="process-description">Programming image as Intel HEX, bytes or bits.</p>
+          <div class="process-tools"><div class="process-views" aria-label="Export result view"><button data-view="hex" class="selected">HEX</button><button data-view="bytes">Bytes</button><button data-view="bits">Bits</button></div><button class="button refresh-stage" type="button">Refresh</button><button class="button" id="download" type="button" disabled>Download HEX</button><span class="result-state" role="status"></span></div>
+          <pre class="process-output" id="output-export" tabindex="0" aria-label="Export result">Open this process to request its results.</pre>
+        </div>
+      </details>
+      <p id="handoff-status" class="handoff-status" role="status">Build an image to make it available to PCB / board.</p>
+    </section>
+  </main>
+  </div>
+  </div>
+</div>
+</body>
+</html>

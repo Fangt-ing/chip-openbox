@@ -1,0 +1,103 @@
+:root { font-family:"Segoe UI",Arial,sans-serif; color:#22384e; background:#fff; --border:#cbd7e1; --muted:#5c7085; --accent:#008c90; }
+* { box-sizing:border-box; }
+body { margin:0; height:100dvh; display:flex; flex-direction:column; overflow:hidden; }
+header { display:flex; gap:30px; align-items:center; min-height:55px; padding:0 24px; border-bottom:1px solid var(--border); flex-shrink:0; }
+h1 { margin:0; font-size:28px; font-weight:650; letter-spacing:-.8px; white-space:nowrap; }
+nav { display:flex; align-self:stretch; }
+nav a { display:flex; align-items:center; text-decoration:none; color:var(--muted); padding:14px 16px; }
+nav a[aria-current] { color:var(--accent); border-bottom:2px solid var(--accent); }
+main { flex:1; min-height:0; display:flex; flex-direction:column; background:linear-gradient(#eaf0f4 1px,transparent 1px),linear-gradient(90deg,#eaf0f4 1px,transparent 1px); background-size:16px 16px; }
+.chip-caption { display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding:7px 24px; font-size:13px; flex-shrink:0; background:#fff; border-bottom:1px solid var(--border); position:relative; z-index:6; }
+.chip-caption strong { font-weight:600; }
+.chip-caption span { color:var(--muted); font-size:12px; }
+.chip-caption a { color:#007d86; font-size:12px; margin-left:0; }
+.chip-canvas { flex:1; min-height:0; overflow:auto; padding:22px 24px; }
+#chip-zoom-surface { zoom:1; }
+#chip-package { position:relative; isolation:isolate; width:1650px; height:930px; margin:0; border:2px solid #8fa6b7; border-radius:10px; background:#fbfdfe; }
+.package-label { position:absolute; z-index:2; top:15px; left:24px; font-size:11px; color:var(--muted); pointer-events:auto; }
+#chip-block-layer { position:absolute; inset:0; pointer-events:none; }
+.block-window { position:absolute; z-index:2; width:max-content; min-width:0; max-width:none; border:1px solid var(--border); border-radius:3px; background:#fff; pointer-events:auto; }
+.block-window summary { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:10px 12px; min-height:40px; cursor:move; user-select:none; list-style:none; background:#f4f7fa; font-size:12px; font-weight:600; white-space:nowrap; }
+.block-window summary::-webkit-details-marker { display:none; }
+.block-window summary::after { content:""; width:7px; height:7px; border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor; transform:rotate(-45deg); flex-shrink:0; }
+.block-window[open] { width:240px; min-width:210px; min-height:130px; resize:both; overflow:hidden; }
+.block-window[open] summary { border-bottom:1px solid var(--border); }
+.block-window[open] summary::after { transform:rotate(45deg); }
+.block-window:not([open]) { width:max-content!important; height:auto!important; }
+.block-window summary:hover { background:#ecf8f6; }
+.block-window summary:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+.block-window.is-moving { z-index:4; border-color:var(--accent); box-shadow:0 4px 14px #22384e20; }
+.block-window.is-moving summary { cursor:grabbing; }
+.block-content { height:calc(100% - 40px); overflow:auto; padding:12px; font-size:12px; line-height:1.6; color:var(--muted); }
+.block-content p { margin:0 0 10px; }
+.block-full-name { font-weight:600; color:#22384e; }
+.block-parts { display:flex; flex-wrap:wrap; gap:6px; }
+.block-parts span { background:#f5f8fa; border:1px solid #dfe8ee; padding:3px 7px; font-size:11px; }
+.block-window[data-kind=integration] { border-style:dashed; }
+.pin-group { position:absolute; z-index:3; display:flex; align-items:center; gap:5px; width:80px; min-height:28px; color:#486578; font-size:10px; white-space:nowrap; }
+.pin-group.left { left:-12px; }
+.pin-group.right { right:-12px; justify-content:flex-end; }
+.pin-contact { width:16px; height:13px; background:#e3ebf1; border:1px solid #8fa6b7; flex-shrink:0; }
+.pin-group.right .pin-contact { order:2; }
+.pin-group > span:not(.pin-contact) { transform:translateY(-12px); }
+#chip-connections { position:absolute; inset:0; width:100%; height:100%; overflow:visible; z-index:1; pointer-events:none; }
+.group-shape { fill:#f0f7fa; stroke:#afcbd5; stroke-width:1; stroke-linejoin:round; }
+#group-pdcore .group-shape { fill:#eef5e9; stroke:#b6c8b1; }
+#group-processor-core .group-shape { fill:#fff; stroke:#bfcdd8; }
+#group-pdepu .group-shape { fill:#fff4df; stroke:#d7b677; }
+#group-pdrams .group-shape { fill:#f2eef9; stroke:#b8abc9; }
+#group-pddebug .group-shape { fill:#eaf2fa; stroke:#aabed1; }
+.group-label { fill:#385065; font:600 12px "Segoe UI",Arial,sans-serif; }
+.chip-wire { fill:none; stroke:#728596; stroke-width:1.1; marker-end:url(#chip-arrow); }
+.chip-wire.integration { stroke:#879dad; stroke-dasharray:4 3; }
+.chip-wire.pin { stroke:#008c90; stroke-width:1.4; }
+.chip-wire.bidirectional { marker-start:url(#chip-arrow); }
+.scope-note,#chip-preview-status { padding:0 24px; margin:0 0 14px; color:var(--muted); font-size:11px; line-height:1.6; flex-shrink:0; }
+#chip-image-preview { margin-top:12px; padding-top:10px; border-top:1px solid #dfe8ee; }
+#chip-image-preview h3 { font-size:12px; margin:0 0 8px; }
+#chip-image-bytes { padding:8px; background:#f8fbfd; border:1px solid #dfe8ee; white-space:pre-wrap; overflow-wrap:anywhere; font:11px/1.6 Consolas,monospace; }
+[hidden] { display:none!important; }
+.embedded header { display:none; }
+@media(max-width:650px) { header { padding:12px 16px 0; flex-wrap:wrap; gap:4px; } h1 { font-size:23px; } nav { width:100%; } nav a { padding:12px 16px; } .chip-caption { padding:7px 16px; gap:8px; } .chip-caption a { margin-left:0; } .chip-canvas { padding:20px 16px; } }
+
+.group-label { paint-order:stroke fill; stroke:#fbfdfe; stroke-width:3px; stroke-linejoin:round; }
+
+.chip-memory-wire { stroke-width:1.4; pointer-events:stroke; }
+.chip-memory-wire.ram-net-input { stroke-dasharray:5 2; }
+.chip-memory-wire.ram-net-control { stroke-dasharray:3 2; }
+.chip-memory-contact { fill:#fff; stroke-width:1.3; }
+
+.chip-memory-wire.ram-net-program-control { stroke-dasharray:2 2; }
+
+.block-reference { display:block; margin:0 0 10px; color:#007d86; font-size:10px; }
+.block-window[data-scope=reference] summary { background:#eef7f5; }
+
+#group-mcu-integration .group-shape { fill:#fff9ef; stroke:#cfb790; stroke-dasharray:6 4; }
+
+.architecture-port { position:absolute; z-index:3; display:flex; align-items:center; pointer-events:auto; color:#486578; font-size:10px; }
+.interface-contact { width:12px; height:12px; border:1px solid #728596; background:#fff; }
+.interface-label { position:absolute; left:16px; top:-15px; white-space:nowrap; background:#fbfdfe; }
+
+#group-mcu-system .group-shape { fill:#edf7f5; stroke:#93b9b0; stroke-dasharray:6 4; }
+.architecture-port.left .interface-label { left:auto; right:16px; }
+.chip-wire.signal-clock { stroke:#397cad; stroke-dasharray:7 3; }
+.chip-wire.signal-reset { stroke:#a05d46; stroke-dasharray:3 3; }
+.chip-wire.signal-power-control { stroke:#8d70aa; stroke-dasharray:6 2 2 2; }
+.chip-wire.signal-supply { stroke:#a68b64; stroke-dasharray:2 4; stroke-width:1; }
+
+.chip-wire { pointer-events:none; }
+.chip-memory-wire { pointer-events:none; }
+.chip-wire-hit { fill:none; stroke:transparent; stroke-width:12px; vector-effect:non-scaling-stroke; pointer-events:stroke; cursor:pointer; outline:none; }
+.chip-connection-point { fill:#fff; stroke:#728596; stroke-width:1; pointer-events:none; }
+
+#group-mcu-peripherals .group-shape { fill:#f6f2fb; stroke:#b9a5ca; stroke-dasharray:6 4; }
+.chip-wire.signal-interrupt { stroke:#a34580; stroke-dasharray:4 2; }
+
+.visually-hidden { position:absolute!important; width:1px; height:1px; padding:0!important; margin:-1px!important; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+.chip-caption { margin-left:auto; padding:0; border:0; background:transparent; gap:8px; min-width:0; }
+
+
+/* Only labels and boundary strokes drag groups; empty canvas still pans. */
+.group-label.group-drag-handle { pointer-events:all; cursor:grab; user-select:none; touch-action:none; }
+.group-shape.group-drag-handle { pointer-events:stroke; cursor:grab; touch-action:none; }
+.group-drag-handle.is-moving { cursor:grabbing; }

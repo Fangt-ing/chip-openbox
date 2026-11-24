@@ -1,0 +1,24 @@
+.pane-heading { display:flex; align-items:center; flex-wrap:nowrap; justify-content:flex-start; gap:8px; padding:5px 10px; height:40px; min-height:40px; flex-shrink:0; min-width:0; background:#fff; border-bottom:1px solid #dfe8ee; font:12px "Segoe UI",sans-serif; }
+.pane-heading > strong { flex:0 0 auto; white-space:nowrap; font-size:12px; }
+.pane-heading .open-separately { margin-left:auto; flex:0 0 auto; color:#007d86; font-size:11px; text-decoration:none; white-space:nowrap; }
+.pane-controls { display:flex; align-items:center; gap:8px; min-width:0; overflow-x:auto; scrollbar-width:thin; }
+#workspaces[data-layout=all] .pane-controls { display:none; }
+.pane-controls .pane-field { display:flex; align-items:center; gap:5px; white-space:nowrap; flex:0 0 auto; font-size:11px; }
+.pane-controls select { max-width:240px; min-width:75px; height:27px; padding:3px 5px; border:1px solid #cbd7e1; background:white; color:inherit; font:11px "Segoe UI",sans-serif; }
+.pane-action { flex:0 0 auto; min-width:26px; height:27px; padding:3px 8px; border:1px solid #cbd7e1; border-radius:2px; background:#fff; color:#385065; font:11px "Segoe UI",sans-serif; cursor:pointer; }
+.pane-action.primary { color:white; background:#008c90; border-color:#008c90; }
+.pane-action[data-kind=zoom] { min-width:24px; padding:3px 5px; }
+.pane-heading .chipset-picker { min-width:160px; width:250px; max-width:260px; flex:0 1 250px; }
+.pane-heading .chipset-field input { font-size:11px; padding:5px 6px; }
+.pane-heading .chipset-field button { flex-basis:24px; }
+header > .pane-heading,.app-header > .pane-heading { min-width:0; margin-left:auto; flex:1; overflow-x:auto; border:0; background:transparent; gap:8px; padding:0; }
+header > .pane-heading label,.app-header > .pane-heading label { white-space:nowrap; flex-shrink:0; }
+header > .pane-heading select,.app-header > .pane-heading select { max-width:230px; min-height:27px; padding:3px; font-size:11px; }
+header > .pane-heading .zoom-controls,.app-header > .pane-heading .zoom-controls { flex-shrink:0; }
+header > .pane-heading .build-status { display:none; }
+.embedded > body > header { display:none; }
+.embedded .app-header { display:none; }
+.pane-heading .workflow-actions { display:flex; flex-wrap:nowrap; margin:0; gap:6px; flex-shrink:0; }
+.pane-heading .workflow-button { min-width:0; padding:4px 8px; font-size:11px; }
+.pane-heading .workflow-button small { display:none; }
+.pane-heading .pane-reference { flex:0 0 auto; color:#007d86; font-size:11px; white-space:nowrap; text-decoration:underline; }

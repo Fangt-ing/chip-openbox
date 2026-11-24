@@ -1,0 +1,21 @@
+.diagram-object-heading { display:flex; align-items:center; gap:7px; white-space:nowrap; user-select:none; }
+.diagram-object-heading:hover { background:#ecf8f6; }
+.package-label.diagram-object-heading { padding:3px 5px; }
+.diagram-object-heading > .diagram-object-control:first-of-type { margin-left:auto; }
+.diagram-object-control { display:inline-flex; align-items:center; justify-content:center; position:relative; flex:0 0 18px; width:18px; height:18px; padding:0; color:inherit; background:transparent; border:1px solid transparent; border-radius:2px; cursor:pointer; }
+.diagram-object-control:hover { background:#e4f3f1; border-color:#a5c9c6; }
+.diagram-object-control:focus-visible { outline:2px solid #008c90; }
+.diagram-fold::before { content:""; position:absolute; width:5px; height:5px; border-right:1.4px solid currentColor; border-bottom:1.4px solid currentColor; transform:rotate(-45deg); }
+.diagram-fold[aria-expanded=true]::before { transform:rotate(45deg); top:4px; }
+.diagram-toggle-all::before,.diagram-toggle-all::after { content:""; position:absolute; left:5px; width:5px; height:5px; border-right:1.4px solid currentColor; border-bottom:1.4px solid currentColor; transform:rotate(45deg); }
+.diagram-toggle-all::before { top:2px; }
+.diagram-toggle-all::after { top:7px; }
+.diagram-toggle-all[aria-expanded=true]::before,.diagram-toggle-all[aria-expanded=true]::after { transform:rotate(225deg); }
+.diagram-resize-handle { position:absolute; right:0; bottom:0; z-index:6; width:15px; height:15px; padding:0; border:0; background:linear-gradient(135deg,transparent 56%,#8fa6b7 58%,#8fa6b7 63%,transparent 65%,transparent 75%,#8fa6b7 77%,#8fa6b7 82%,transparent 84%); cursor:nwse-resize; touch-action:none; }
+.block-window[open] { resize:none!important; }
+.block-window summary::after { display:none; }
+.diagram-group-heading { position:absolute; z-index:3; padding:3px 5px; color:#36566c; font-size:11px; line-height:18px; background:#fbfdfef2; pointer-events:auto; }
+.diagram-group-resize { position:absolute; z-index:3; }
+.diagram-node.diagram-object-selected.block-window,.diagram-node.diagram-object-selected#chip-package { border-color:#008c90; }
+.diagram-node.diagram-object-selected > .group-shape { stroke:#008c90; stroke-width:1.5; }
+.functional-unit.diagram-object-selected > rect,.functional-unit.diagram-object-selected > path { stroke:#008c90; stroke-width:1.5; }

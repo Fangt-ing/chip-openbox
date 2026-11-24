@@ -1,0 +1,10 @@
+.zoom-controls { display:flex; align-items:center; gap:3px; flex-shrink:0; }
+.zoom-controls button { height:30px; min-width:30px; border:1px solid var(--border,#cbd7e1); border-radius:3px; background:#fff; color:inherit; font:inherit; cursor:pointer; }
+.zoom-controls button:hover:not(:disabled) { background:#ecf8f6; border-color:var(--accent,#008c90); }
+.zoom-controls button:focus-visible { outline:2px solid var(--accent,#008c90); outline-offset:2px; }
+.zoom-controls button:disabled { opacity:.45; cursor:default; }
+#zoom-reset { min-width:58px; font-size:12px; font-variant-numeric:tabular-nums; }
+[data-pan-canvas] { cursor:grab; overscroll-behavior:contain; overflow-anchor:none; }
+[data-pan-canvas] > * { overflow-anchor:none; }
+[data-pan-canvas].is-panning,[data-pan-canvas].is-panning * { cursor:grabbing!important; user-select:none!important; }
+[data-pan-canvas] textarea,[data-pan-canvas] pre,[data-pan-canvas] [contenteditable] { cursor:text; }

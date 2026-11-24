@@ -1,0 +1,46 @@
+.block-window.ram-window[open] { width:1120px; height:330px; min-width:300px; min-height:230px; }
+.ram-window .block-content { padding:0; overflow:hidden; }
+.ram-view { width:100%; height:100%; }
+.ram-diagram { display:block; width:100%; height:100%; overflow:visible; }
+.ram-diagram text { font:11px Consolas,monospace; fill:#627a8b; pointer-events:none; }
+.ram-diagram .ram-label { font:10px "Segoe UI",Arial,sans-serif; fill:#6c8292; }
+.ram-diagram .ram-bit-index { font-size:8.5px; fill:#58758a; paint-order:stroke fill; stroke:#fff; stroke-width:2.5px; stroke-linejoin:round; }
+.ram-cell { fill:#e5f5ef; stroke:#66aaa5; stroke-width:1; }
+.ram-diagram .ram-bit-value { fill:#00777b; font-weight:600; font-size:12px; }
+.ram-wire,.ram-bus,.ram-input-wire,.ram-output-wire,.ram-select-wire,.ram-control-wire { fill:none; stroke:currentColor; stroke-width:1; }
+.ram-bus,.ram-select-wire { stroke-width:1.2; }
+.ram-net-address { color:#397cad; }
+.ram-net-input { color:#a27118; }
+.ram-net-control { color:#8d70aa; }
+.ram-net-output { color:#008b87; }
+.ram-control-wire { stroke-dasharray:3 2; }
+.ram-bus.ram-net-input { stroke-dasharray:5 2; }
+.ram-bus.ram-net-control { stroke-dasharray:3 2; }
+.ram-idle { opacity:.32; }
+.ram-port { fill:#fff; stroke:currentColor; stroke-width:1.3; }
+.ram-junction { fill:#7e9fbd; }
+.ram-control-junction { fill:#aa9fbd; }
+.ram-bundle { fill:none; stroke:currentColor; stroke-width:1; }
+.ram-dot { fill:currentColor; }
+.ram-wire-value { cursor:grab; user-select:none; outline:none; }
+.ram-wire-value.is-dragging { cursor:grabbing; }
+.ram-wire-value rect { fill:#fff; stroke:currentColor; stroke-width:1; pointer-events:all; }
+.ram-wire-value:focus-visible rect { stroke-width:2; }
+.ram-wire-value text { fill:#31576b; font-size:10px; }
+
+.memory-window .block-content { display:flex; flex-direction:column; }
+.memory-window .memory-view { flex:1; min-height:0; height:auto; }
+.memory-window #chip-image-preview { flex:0 0 auto; max-height:58px; overflow:auto; margin:0; padding:4px 10px; border-top:0; border-bottom:1px solid #dbe5eb; }
+.memory-window #chip-image-preview h3 { display:inline; margin:0 8px 0 0; font-size:10px; }
+.memory-window #chip-image-metadata { display:inline; margin:0; font-size:10px; }
+.memory-window #chip-image-bytes { margin:2px 0 0; padding:2px 4px; font-size:10px; }
+
+.memory-window[open] > .block-content { position:absolute; inset:40px 0 0; height:auto; }
+
+.ram-net-program-control { color:#9254aa; }
+.ram-bus.ram-net-program-control { stroke-dasharray:2 2; }
+.ram-diagram .memory-cache-field { font-size:10px; fill:#526d80; }
+
+.ram-diagram { --diagram-selected-width:1.4px; }
+
+.memory-window[data-word-bytes="1"][open] { width:590px; height:290px; }

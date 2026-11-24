@@ -1,0 +1,19 @@
+.functional-window[open] { width:var(--detail-width); height:var(--detail-height); min-width:240px; min-height:130px; }
+.functional-window[open] > .block-content { position:absolute; inset:40px 0 0; height:auto; padding:0; display:flex; flex-direction:column; overflow:hidden; }
+.functional-view { flex:1; min-height:0; }
+.functional-diagram { display:block; width:100%; height:100%; overflow:visible; }
+.functional-unit > rect,.functional-unit > path { fill:#f8fbfc; stroke:#92a8b8; stroke-width:1; }
+.functional-name { font:600 11px "Segoe UI",sans-serif; fill:#29485a; text-anchor:middle; }
+.functional-value { font:10px Consolas,monospace; fill:#486578; text-anchor:middle; }
+.functional-caption { font:10px Consolas,monospace; fill:#526c7c; }
+.functional-boundary-label,.functional-note { font:10px "Segoe UI",sans-serif; fill:#526c7c; paint-order:stroke fill; stroke:#fff; stroke-width:3px; }
+.functional-wire { fill:none; stroke:#397cad; stroke-width:1.1; }
+.functional-wire.control { stroke:#8d70aa; }
+.functional-wire.register { stroke:#a58248; stroke-width:.85; }
+.functional-wire.reset { stroke:#a66f55; stroke-width:.85; }
+.functional-wire.status { stroke:#008b87; }
+.functional-port { fill:#fff; stroke:#668491; stroke-width:1; }
+.functional-junction { fill:#668491; pointer-events:none; }
+.functional-junction.is-selected { fill:#d97706; }
+.functional-reference { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:5px 10px; border-top:1px solid #e4ebef; font-size:10px; color:#708494; }
+.functional-reference a { color:#007d86; }

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chip Openbox · chip</title><link rel="stylesheet" href="./chip.css"><link rel="stylesheet" href="../../common/visualization/canvas-navigation.css">
+  <link rel="stylesheet" href="../../common/visualization/diagram-objects.css">
+  <script defer src="../../documents/catalog.js"></script>
+  <script defer src="../../common/visualization/diagram-objects.js"></script>
+  <script defer src="../../common/visualization/layered-object.js"></script>
+  <link rel="stylesheet" href="../../common/visualization/layered-object.css">
+  <script defer src="../../common/visualization/unit-box.js"></script>
+  <script defer src="../../common/visualization/orthogonal-routing.js"></script>
+  <script defer src="../../common/component-channel.js"></script>
+  <script defer src="../../common/visualization/connection-ports.js"></script>
+  <script defer src="../../common/visualization/canvas-zoom.js"></script>
+  <script defer src="./chip-target/cortex-m85/architecture.js"></script>
+  <script defer src="./default-content/generic-m85.js"></script>
+  <script defer src="./chip-target/c8051f500/diagram.js"></script>
+  <script defer src="./chip-target/c8051f500/system-clock.js"></script>
+  <script defer src="./chip-target/c8051f500/unit-details.js"></script>
+  <script defer src="./chipsets.js"></script>
+  <script defer src="./visualization/architecture-layout.js"></script>
+  <link rel="stylesheet" href="./visualization/ram-view.css">
+  <script defer src="./memory/sram.js"></script>
+  <script defer src="./visualization/ram-view.js"></script>
+  <script defer src="./visualization/timer-view.js"></script>
+  <script defer src="./visualization/connections.js"></script>
+  <link rel="stylesheet" href="./visualization/unit-diagram.css">
+  <script defer src="./visualization/unit-diagram.js"></script>
+  <script defer src="./visualization/base-diagram.js"></script>
+  <link rel="stylesheet" href="./visualization/chipset-selector.css">
+  <script defer src="./visualization/chipset-selector.js"></script>
+  <link rel="stylesheet" href="../../common/visualization/pane-heading.css"><script defer src="../../common/visualization/pane-heading.js"></script><script defer src="./chip.js"></script>
+</head>
+<body>
+  <header><h1>Chip Openbox</h1><nav aria-label="Workspace"><a href="../scripts/scripts.html" target="_top">scripts</a><a href="./chip.html" aria-current="page">chip</a><a href="../board/board.html" target="_top">board</a><a href="../../openbox.html" target="_top">openbox</a></nav>  <div class="chip-caption pane-heading" role="toolbar" aria-label="Chip controls">
+    <strong>Chip / MCU</strong><div class="chipset-picker" id="chipset-picker">
+      <label class="visually-hidden" for="chipset-search">Chipset</label>
+      <div class="chipset-field"><input id="chipset-search" type="search" placeholder="Type to search" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="chipset-options"><button type="button" aria-label="Show chipsets" title="Show chipsets">⌄</button></div>
+      <ul id="chipset-options" role="listbox" aria-label="Available chipset views" hidden></ul>
+    </div>
+    <div class="zoom-controls" role="group" aria-label="Canvas zoom"><button id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out">−</button><button id="zoom-reset" type="button" aria-label="Zoom 100 percent. Reset to 100 percent" title="Reset view to 100%">100%</button><button id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in">+</button></div>
+
+  </div>
+<p class="scope-note" hidden>MCU → Cortex-M85 processor → functional units → selected memory cells. MCU clock/reset/power circuitry stays outside the processor; CPC/DPC stay in their documented domains. Outer contacts represent external chip connections; IRQ and P-AHB are processor interfaces. Generic integration, no device pinout or execution model.</p>
+    <p hidden id="chip-preview-status" role="status">No program image preview received. Program storage is unchanged.</p>
+</header>
+  <main>
+    <div class="chip-canvas" aria-label="Zoomable chip canvas">
+      <div id="chip-zoom-surface">
+      <section id="chip-package" aria-label="MCU chip boundary">
+        <svg id="chip-connections" aria-label="Static chip connections"><defs><marker id="chip-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto-start-reverse"><path d="M0,0 L6,3 L0,6" fill="context-stroke"/></marker></defs><g id="chip-group-outlines"></g><g id="chip-wire-paths"></g><g id="chip-group-labels"></g></svg>
+        <div class="package-label">MCU · entire chip</div>
+        <div id="package-pins"></div>
+        <div id="chip-block-layer"></div>
+      </section>
+      </div>
+    </div>
+  </main>
+</body></html>

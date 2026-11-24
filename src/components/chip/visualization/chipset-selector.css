@@ -1,0 +1,11 @@
+.chipset-picker { position:relative; margin-left:0; width:260px; max-width:100%; flex-shrink:0; z-index:8; }
+.chipset-picker label { display:block; margin-bottom:4px; font-size:11px; color:var(--muted); }
+.chipset-field { display:flex; border:1px solid var(--border); border-radius:3px; background:#fff; }
+.chipset-field:focus-within { border-color:var(--accent); outline:1px solid var(--accent); }
+.chipset-field input { width:100%; min-width:0; border:0; outline:none; background:transparent; padding:7px 9px; color:inherit; font:12px "Segoe UI",sans-serif; }
+.chipset-field button { flex:0 0 30px; border:0; border-left:1px solid var(--border); background:#f4f7fa; color:inherit; cursor:pointer; font-size:16px; }
+.chipset-picker ul { position:absolute; top:100%; left:0; right:0; max-height:220px; overflow:auto; margin:4px 0 0; padding:4px; list-style:none; background:#fff; border:1px solid var(--border); border-radius:3px; box-shadow:0 3px 10px #22384e18; }
+.chipset-picker [role=option] { padding:8px; cursor:pointer; font-size:12px; }
+.chipset-picker [role=option]:hover,.chipset-picker [role=option].is-active { background:#e8f6f4; color:#007d86; }
+.chipset-empty { padding:8px; font-size:12px; color:var(--muted); }
+
